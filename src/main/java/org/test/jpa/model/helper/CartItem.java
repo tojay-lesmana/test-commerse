@@ -1,0 +1,60 @@
+package org.test.jpa.model.helper;
+
+import org.test.jpa.model.Product;
+
+public class CartItem {
+
+	private Product product;
+	private int quantity;
+	private long total;
+	
+	public CartItem(Product product) {
+		this.product = product;
+	}
+	
+	public CartItem(Product product, int quantity) {
+		this.product = product;
+		this.quantity = quantity;
+	}
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	public long getTotal() {
+		return total;
+	}
+
+	public void setTotal(long total) {
+		this.total = total;
+	}
+
+	@Override
+	public String toString() {
+		return this.product.getId()+"";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof CartItem)){
+			return false;
+		}
+		CartItem cartItem = (CartItem) obj;
+		if(this.getProduct()== null || cartItem.getProduct() == null){
+			return false;			
+		}
+		return this.getProduct().getId() == cartItem.getProduct().getId();
+	}
+}
